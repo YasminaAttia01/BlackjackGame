@@ -26,6 +26,7 @@ public class FXMLDocumentController {
     Button.setVisible(false);
 
         // Show the text area with rules
+        TextArea.setEditable(false);
         TextArea.setVisible(true);
         Button1.setVisible(true);
         

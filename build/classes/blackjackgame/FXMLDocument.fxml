@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="913.0" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="blackjackgame.FXMLDocumentController">
+   <children>
+      <Button fx:id="Button" layoutX="543.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="65.0" prefWidth="275.0" text="Start The Game" textFill="#060b07" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font name="Algerian" size="23.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="TextArea" layoutX="503.0" layoutY="94.0" prefHeight="417.0" prefWidth="396.0" style="-fx-border-color: #000000;" stylesheets="@StyleSheet.css" text="Welcome to Blackjack!.&#10;BLACKJACK RULES:&#10;-The player is dealt 2 cards. The dealer &#10;is dealt 2 cards with one face-up&#10; and one face-down.&#10;-Cards are equal to their&#10; value with face cards &#10;being 10 and an Ace being 1 or 10.&#10;-The player cards are added up&#10; for their total.&#10;-Player “Hits” to gain another card from &#10;the deck. Players “Stay” to keep&#10; their current card total.&#10;-Dealer “Hits” until&#10;they equal or exceed 17.&#10;-The goal is to have a higher card &#10;total than the dealer &#10;without going over 21.&#10;-If the player total equals the dealer &#10;total, it is a “Push” and the hand ends.&#10;" visible="false">
+         <font>
+            <Font name="Algerian" size="14.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="Button1" layoutX="376.0" layoutY="523.0" mnemonicParsing="false" onAction="#handleButtonActionView" prefHeight="57.0" prefWidth="162.0" text="Continue" textFill="#060b07" textOverrun="WORD_ELLIPSIS" visible="false">
+         <font>
+            <Font name="Algerian" size="23.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
