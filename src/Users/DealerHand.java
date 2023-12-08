@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author MSI
  */
-public  class DealerHand extends Hand {
+public final  class DealerHand extends Hand {
   private Card Hiddencard  ;
   
   

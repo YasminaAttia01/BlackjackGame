@@ -6,6 +6,7 @@ package Users;
 
 import Game.Card;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  *
@@ -30,24 +31,25 @@ public final class PlayerHand extends Hand{
     }
 
     @Override
-       public int calculateTotal() {
-        	int total=0;
-		boolean aceFlag = false;
-      for (Card card : theHand) {
-           
-            int value= card.getValue();
-            
-            if ( value == 1) {
-	      aceFlag = true;
-        }
-            total+= value;
-      }
-      if (aceFlag && total+9 <= 21) {
-			total += 9;
-		}
-      
-       return total;
+public int calculateTotal() {
+    AtomicBoolean aceFlag = new AtomicBoolean(false);
+
+    int total = theHand.stream()
+            .mapToInt(Card::getValue)
+            .peek((int value) -> {
+                if (value == 1) {
+                    aceFlag.set(true);
+                }
+            })
+            .sum();
+
+    if (aceFlag.get() && total + 9 <= 21) {
+        total += 9;
     }
+
+    return total;
+}
+
        
        
        

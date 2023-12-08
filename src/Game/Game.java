@@ -1,8 +1,10 @@
 package Game;
 
+import static Users.DataInsertion.insertData;
 import Users.Dealer;
 import Users.DealerHand;
 import Users.Player;
+import Users.User;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,9 +23,22 @@ public class Game {
 
     /**
      * @param args the command line arguments
+     * @throws java.lang.ClassNotFoundException
      */
-    public static void main(String[] args) {
-        Card card = null; 
+    public static void main(String[] args) throws ClassNotFoundException {
+        
+         Deck Deck=new Deck();
+        System.out.println(Deck);
+        
+         Deck.shuffle();
+          System.out.println(Deck);
+        
+         
+        //User user = new User("John", "Doe");
+        //insertData("mahmoud45", "omri45");
+         
+            
+       /* Card card = null; 
           try {
             // TODO code application logic here
             card=new Card('D',1,"Ace");
@@ -34,10 +49,13 @@ public class Game {
           
         
       
-        /* Deck Deck=new Deck();
+         Deck Deck=new Deck();
+        System.out.println(Deck)
+        
+         Deck.shuffle();
+          System.out.println(Deck);
+         
       
-         Deck. shuffle();*/
-         System.out.println(card.ShowCard());
         
       
         /* List<Card> theHand = new ArrayList<>();

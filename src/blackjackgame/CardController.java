@@ -7,6 +7,7 @@ package blackjackgame;
 import Game.Deck;
 import Users.Dealer;
 import Users.Player;
+import Users.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -82,6 +83,7 @@ public class CardController implements Initializable {
      private MediaPlayer mediaPlayer3;
      private MediaPlayer mediaPlayer4;
      private MediaPlayer mediaPlayer5;
+     private MediaPlayer mediaPlayer6;
     @FXML
     private Button ResetButton;
     @FXML
@@ -90,6 +92,7 @@ public class CardController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+      
       ResetButton.setVisible(false);
       
    deck =new Deck();
@@ -131,7 +134,8 @@ public class CardController implements Initializable {
     String soundFile5 = "/cards/YouWin.mp3";
     Media sound4 = new Media(getClass().getResource(soundFile5).toExternalForm());
     mediaPlayer5 = new MediaPlayer(sound4);
-    }    
+    }   
+   
 
     @FXML
     private void HitCard(ActionEvent event) {
