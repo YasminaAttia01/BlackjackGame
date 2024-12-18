@@ -1,114 +1,35 @@
 package Game;
 
-import static Users.DataInsertion.insertData;
-import Users.Dealer;
-import Users.DealerHand;
-import Users.Player;
-import Users.User;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Game.Deck;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-
-/**
- *
- * @author MSI
- */
 public class Game {
+    private GameState state; // État actuel du jeu
+    private Deck deck;       // Le deck de cartes utilisé pour la partie
 
-    /**
-     * @param args the command line arguments
-     * @throws java.lang.ClassNotFoundException
-     */
-    public static void main(String[] args) throws ClassNotFoundException {
-        
-         Deck Deck=new Deck();
-        System.out.println(Deck);
-        
-         Deck.shuffle();
-          System.out.println(Deck);
-        
-         
-        //User user = new User("John", "Doe");
-        //insertData("mahmoud45", "omri45");
-         
-            
-       /* Card card = null; 
-          try {
-            // TODO code application logic here
-            card=new Card('D',1,"Ace");
-           
-        }catch (InvalidCardSuitException | InvalidCardValueException |InvalidCardRankExeception ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-        }
-          
-        
-      
-         Deck Deck=new Deck();
-        System.out.println(Deck)
-        
-         Deck.shuffle();
-          System.out.println(Deck);
-         
-      
-        
-      
-        /* List<Card> theHand = new ArrayList<>();
-         List<Card> theHand1 = new ArrayList<>();
-       
-         Card card2 = null; 
-         Card card1=null;
-           
-      
-        
-       /* theHand.add(card);
-         theHand.add(card1);
-          theHand1.add(card2);
-       
-        
-          
-       // Player Player=new Player(Deck.getHand()); 
-        // dealerhand.DeleteCard(3);
-       // System.out.println(Deck);
-         //dealerhand.AddCardtoDealerHand (card2);
-     //  dealerhand.AddCardtoDealerHand (card1);
-       //    Player.AddCardtoPlayerHand(card2);
-    // Player.PlayerHandContent();
-    // System.out.println(Deck.getHand());
-     //System.out.println(Deck);
-   // Dealer Dealer=new Dealer(Deck.getHand()); 
-       //Player.DelelePlayerHand();
-     // System.out.println(Player.getPlayerHand().calculateTotal());
-     // dealerhand.setDealerHand(theHand1);
-      //Dealer.DealerHandContent(false);
-      //System.out.println(dealerhand.getDealerHand().getHiddenCard());
-      // dealerhand.getDealerHand().removeHiddenCard();
-     //  dealerhand.DealerHandContent(false);
-        //dealerhand.DeleteCard(0);
-         //dealerhand.DeleteCard(0);
-     //   dealerhand.DeleteCard(1);
-     // dealerhand.DeleteCard(0);
-       
-        
-   
-        //dealerhand.DealerHandContent(false);
-       // System.out.println(dealerhand.getDealerHand().getHand().get(0));
-       // dealerhand.DeleteCard(0);
-        //dealerhand.getDealerHand().removeHiddenCard();
-        //dealerhand.DealerHandContent(false);
-        //dealerhand.getDealerHand().removeHiddenCard();
-       //System.out.println(dealerhand.getDealerHand().getHiddenCard());
-   /* Hand thehand=new Hand();
-    thehand.addCard(card);
-   thehand.addCard(card2);
-   thehand.addCard(card3);
-    System.out.println(thehand.getNumberOfCards());*/
+    public Game() {
+        this.deck = new Deck();  // Création du deck
+        this.state = new PlayerTurn(); // Le jeu commence avec le tour du joueur
     }
-    
-    
+
+    public void setState(GameState state) {
+        this.state = state; // Change l'état du jeu
+    }
+
+    public void playGame() {
+        System.out.println("Starting the game...");
+        deck.shuffle(); // Mélange le deck
+        System.out.println("Deck shuffled: " + deck);
+
+        // Le jeu continue jusqu'à l'état "GameOver"
+        while (!(state instanceof GameOver)) {
+            state.handle(this); // Appelle le comportement de l'état actuel
+        }
+
+        System.out.println("Game has ended.");
+    }
+
+    public static void main(String[] args) {
+        Game game = new Game();
+        game.playGame(); // Lance la partie
+    }
 }
